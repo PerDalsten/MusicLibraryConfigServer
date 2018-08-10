@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>dk.purplegreen.musiclibrary</groupId>
 	<artifactId>MusicLibraryConfigServer</artifactId>
-	<version>1.2.4</version>
+	<version>1.2.5-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
     <name>MusicLibraryConfigServer</name>
@@ -12,15 +12,12 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.13.RELEASE</version>
+		<version>2.0.4.RELEASE</version>
 		<relativePath />
 	</parent>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<spring-cloud.version>Edgware.SR3</spring-cloud.version>
+		<spring-cloud.version>Finchley.SR1</spring-cloud.version>
 	</properties>
 
 	<dependencies>
@@ -52,6 +49,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Description>Configuration for MusicLibrary applications</Description>
+						</manifestEntries>
+					</archive>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

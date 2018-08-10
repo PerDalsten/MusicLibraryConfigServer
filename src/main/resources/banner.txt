@@ -1,0 +1,4 @@
+=======================================
+  ${application.title} ${application.formatted-version}
+  (c) PurpleGreen Software
+=======================================
