@@ -1,0 +1,59 @@
+server:
+  port: 8888
+
+encrypt:
+  key: musiclibrary 
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:${user.home}/Projects/MusicLibraryConfig
+        jdbc:
+          sql: SELECT config_key, config_value FROM configuration WHERE application=? AND profile=? AND label=?  
+
+  datasource: 
+    username: musiclibraryconfig
+    password: musiclibraryconfig   
+  
+logging:
+   level:
+      org.springframework: INFO  
+
+---
+
+spring:
+  profiles: derby
+  
+  profiles.include:
+    - jdbc
+  
+  datasource:
+    url: jdbc:derby://localhost:1527/musiclibrarydb
+    driver-class-name: org.apache.derby.jdbc.ClientDriver
+
+---
+
+spring:
+  profiles: mysql
+  
+  profiles.include:
+    - jdbc
+  
+  datasource:
+    url: jdbc:mysql://localhost/musiclibrarydb?serverTimezone=US/Eastern
+    driver-class-name: com.mysql.jdbc.Driver
+    
+---  
+  
+spring:
+  profiles: hsql
+  
+  profiles.include:
+    - jdbc
+
+  datasource:
+    url: jdbc:hsqldb:hsql://localhost/musiclibrarydb
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+             
